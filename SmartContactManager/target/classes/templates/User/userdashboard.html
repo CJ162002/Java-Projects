@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="User/user_base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+<section class="content_div" style="background-color: #D6D6D6 !important;">
+<div class="container">
+<div class="row" style="margin-top: 20%">
+<div class="col-md-8 offset-md-2">
+<h1 class="text-center" style="font-weight: bolder; font-size: 80px; color: black;">Welcome to User Dashboard !!</h1>
+<p class="text-center" style="font-size: 18px; font-style: italic;">✨ Let’s Get Started: Secure Your Contacts with Confidence! 📱🔒</p>
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary" type="button">
+  	<a class="text-center" th:href="@{/user/add-contact}" style="color: white;
+  	font-size: x-large;font-weight: bold;text-decoration: none">
+  	Add Contacts</a>
+  </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="User/user_base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+<section class="content_div" style="background-color: #D6D6D6 !important;">
+<div class="container text-center">
+<div class="row">
+<div class="col-md-10 offset-md-1 mt-3" style="background-color: white;border-radius: 10px" th:if="${con_details}">
+<div th:if="${message}" th:classappend="${message.type}" class="alert mt-3 text-center" id="showcontact_message">
+<p th:text="${message.content}"></p>
+</div>
+<h1 class="mt-3" style="font-weight: bold;">Contact Details</h1>
+<img class="mb-2" style="height: 170px; border-radius: 50%;border:1px solid black;
+ object-fit:cover;" alt="profile_img" th:src="@{'/image/'+${con_details.img}}">
+ <div class="card m-3" style="overflow-y: auto;overflow-x: auto;height: 60vh; padding: 10px">
+<div class="shadow-sm p-2 mt-3 mb-2 bg-body-tertiary rounded d-flex align-items-center">
+  <h3 class="form-label label-log ms-4" style="font-size: x-large; font-weight: bold;">Name :</h3>
+  <div class="ms-3">
+    <h3 th:text="${con_details.name}" style="font-size: x-large;"></h3>
+  </div>
+</div>
+<div class="shadow-sm p-2 mt-3 mb-2 bg-body-tertiary rounded d-flex align-items-center">
+  <h3 class="form-label label-log ms-4" style="font-size: x-large; font-weight: bold;">Nick Name :</h3>
+  <div class="ms-3">
+    <h3 th:text="${con_details.nickName}" style="font-size: x-large;"></h3>
+  </div>
+</div>
+<div class="shadow-sm p-2 mt-3 mb-2 bg-body-tertiary rounded d-flex align-items-center">
+  <h3 class="form-label label-log ms-4" style="font-size: x-large; font-weight: bold;">Email :</h3>
+  <div class="ms-3">
+    <h3 th:text="${con_details.email}" style="font-size: x-large;"></h3>
+  </div>
+</div>
+<div class="shadow-sm p-2 mt-3 mb-2 bg-body-tertiary rounded d-flex align-items-center">
+  <h3 class="form-label label-log ms-4" style="font-size: x-large; font-weight: bold;">Phone number :</h3>
+  <div class="ms-3">
+    <h3 th:text="${con_details.phone}" style="font-size: x-large;"></h3>
+  </div>
+</div>
+<div class="shadow-sm p-2 mt-3 mb-2 bg-body-tertiary rounded d-flex align-items-center">
+  <h3 class="form-label label-log ms-4" style="font-size: x-large; font-weight: bold;">Description :</h3>
+  <div class="ms-3">
+    <h3 th:text="${con_details.description}" style="font-size: large;"></h3>
+  </div>
+</div>
+<div class="mt-4 text-center" style="display: flex; justify-content: center; gap: 10px;">
+    <form th:action="@{'/user/update_contact/'+${con_details.c_id}}" method="post">
+        <button type="submit" class="btn btn-primary btn-lg">Edit</button>
+    </form>
+    <a href="#" th:onclick="|confirmBox(${con_details.c_id})|" type="button" class="btn btn-danger btn-lg">Delete</a>
+</div>
+ </div>
+ </div>
+ <div class="mt-3" style="background-color: red;">
+ <h2 th:unless="${con_details}">Unable to access this contact details !!</h2>
+ </div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

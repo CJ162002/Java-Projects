@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>home</title>
+</head>
+<body>
+
+<section class="homebg">
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+		<div style="text-align: center; font-size: x-large; color: black;margin-top: 6%">
+		<h1>Smart Contact Manager</h1>
+		<p>
+		It is your personal assistant for organizing and managing contacts effortlessly.
+		Say goodbye to cluttered phonebooks and start managing your contacts smartly with Smart Contact Manager!
+		</p>
+		<a th:href="@{/user/dashboard}" id="btn-home">Get Started -></a>
+		</div>
+	</div>
+</div>
+</section>
+
+</body>
+</html>

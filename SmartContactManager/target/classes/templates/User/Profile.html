@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="User/user_base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+<section class="content_div">
+<div class="container">
+<div class="row mt-4">
+<div class="col-md-10 offset-md-1" style="background-color: #E6E6FA;text-align: center;border-radius: 10px; padding: 10px">
+<div style="background-color: #D8BFD8;text-align: center;">
+<img alt="profile_img" th:src="@{/image/profile.png}" style="height: 70px;margin: 10px">
+<h1 class="text-center" style="font-weight: bolder; font-size: 50px; color: black;">Your Profile</h1>
+</div>
+<div >
+<div style="background-color: white;text-align: center;margin: 30px;">
+	<div class="input-group mb-3">
+	  <span class="input-group-text" style="background-color: gray;color: white;font-size: 20px;">Your Name :</span>
+	  <span class="position-absolute top-50 start-50 translate-middle" th:text="${user.getName()}"></span>
+	</div>
+</div>
+<div style="background-color: white;text-align: center;margin: 30px;">
+	<div class="input-group mb-3">
+	  <span class="input-group-text" style="background-color: gray;color: white;font-size: 20px;">Your Email :</span>
+	  <span class="position-absolute top-50 start-50 translate-middle" th:text="${user.getEmail()}"></span>
+	</div>
+</div>
+<div style="background-color: white;text-align: center;margin: 30px;">
+		<div class="input-group mb-3">
+	  <span class="input-group-text" style="background-color: gray;color: white;font-size: 20px;">Your Role :</span>
+	  <span class="position-absolute top-50 start-50 translate-middle" th:text="${user.getRole()}"><input placeholder="Contact Manager"></input></span>
+	</div>
+</div>
+<div style="background-color: white;text-align: center;margin: 30px;">
+		<div class="input-group mb-3">
+	  <span class="input-group-text" style="background-color: gray;color: white;font-size: 20px;">Account active:</span>
+	  <span class="position-absolute top-50 start-50 translate-middle" th:text="${user.isEnabled()}"><input placeholder="Contact Manager"></input></span>
+	</div>
+</div>
+<div style="background-color: white;text-align: center;margin: 30px;">
+		<div class="input-group mb-3">
+	  <span class="input-group-text" style="background-color: gray;color: white;font-size: 20px;">Description :</span>
+	  <span class="position-absolute top-50 start-50 translate-middle" th:text="${user.getAbout()}"></span>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

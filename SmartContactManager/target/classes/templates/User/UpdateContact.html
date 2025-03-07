@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="User/user_base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+<section class="content_div">
+<div class="container mt-2">
+<div class="row" style="height: 93vh;">
+<div class="col-md-8 offset-md-2" 
+style="background-color: #EAEAEA; border-radius: 10px;overflow-y: auto;height: 93vh;">
+<div th:if="${message}" th:classappend="${message.type}" class="alert mt-3 text-center" id="showcontact_message">
+<p th:text="${message.content}"></p>
+</div>
+<h1 class="text-center mt-4">Update Contact</h1>
+<form th:action="@{/user/update-data}" method="post" th:object="${con}" enctype="multipart/form-data" style="padding: 10px;">
+ <input type="hidden" name="c_id" th:value="${con.c_id}">
+	<div class="mt-3">
+	<label for="nickname" class="form-label label-log">Full Name :</label>
+	<div class="input-group mb-3">
+	  <span class="input-group-text"><img class="img_icon" alt="img" th:src="@{/image/profile.png}"></span>
+	    <input type="text" name="name" th:value="${con.name}"
+	    th:classappend="${#fields.hasErrors('name') ? 'is-invalid': ''}"
+	    class="form-control" placeholder="Enter full name" required>
+	    <div th:each="e : ${#fields.errors('name')}" th:text="${e}" class="invalid-feedback error-style"></div>
+	</div>
+	</div>
+	<div class="mt-3">
+	<label for="nickname" class="form-label label-log">Nick Name :</label>
+	<div class="input-group mb-3">
+	  <span class="input-group-text"><img class="img_icon" alt="img" th:src="@{/image/profile.png}"></span>
+	    <input type="text" name="nickName" th:value="${con.nickName}"
+	    th:classappend="${#fields.hasErrors('nickName') ? 'is-invalid': ''}"
+	    class="form-control" placeholder="Enter nick name">
+	    <div th:each="e : ${#fields.errors('nickName')}" th:text="${e}" class="invalid-feedback error-style"></div>
+	</div>
+	</div>
+	<div class="mt-3">
+	<label for="nickname" class="form-label label-log">Email id :</label>
+	<div class="input-group mb-3">
+	  <span class="input-group-text"><img class="img_icon" alt="img" th:src="@{/image/email.png}"></span>
+	    <input type="text" name="email" th:value="${con.email}"
+	    th:classappend="${#fields.hasErrors('email') ? 'is-invalid': ''}"
+	    class="form-control" placeholder="Enter Email id" required>
+	    <div th:each="e : ${#fields.errors('email')}" th:text="${e}" class="invalid-feedback error-style"></div>
+	</div>
+	</div>
+	<div class="mt-3">
+	<label for="nickname" class="form-label label-log">Phone Number :</label>
+	<div class="input-group mb-3">
+	  <span class="input-group-text"><img class="img_icon" alt="img" th:src="@{/image/phone_icon.png}"></span>
+	    <input type="text" name="phone" th:value="${con.phone}"
+	    th:classappend="${#fields.hasErrors('phone') ? 'is-invalid': ''}"
+	    class="form-control" placeholder="Enter phone number" required>
+	    <div th:each="e : ${#fields.errors('phone')}" th:text="${e}" class="invalid-feedback error-style"></div>
+	</div>
+	</div>
+	<div class="mt-3">
+		<label for="description" class="form-label label-log">Description :</label>
+	    <textarea class="form-control" rows="10" name="description" th:text="${con.description}"
+	    th:classappend="${#fields.hasErrors('description') ? 'is-invalid': ''}"
+	    placeholder="Add description .." id="description"></textarea>
+	    <div th:each="e : ${#fields.errors('description')}" th:text="${e}" class="invalid-feedback error-style"></div>
+	</div>
+	<div class="mb-3">
+	  <label for="formFile" class="form-label label-log mt-3">Profile Image</label>
+	  <div class="text-center">
+	  <img class="m-2" style="height:250px;width:250px;border-radius:50%" alt="profile_img" th:src="@{'/image/'+${con.img}}">
+	  </div>
+	  <input class="form-control" th:value="${con.img}" type="file" name="profileimg" id="formFile">
+	</div>
+	 <div class="text-center mt-3 mb-3">
+	 <button type="submit" class="btn btn-primary">Save Contact</button>
+	 </div>
+</form>
+</div>
+</div>
+</div>
+
+</section>
+</body>
+</html>
